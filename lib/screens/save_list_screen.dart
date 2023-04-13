@@ -25,45 +25,54 @@ class _SaveListScreenState extends State<SaveListScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          '저장된 게임',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-          ),
+        title: const Text(
+          '저장된 게임'
         ),
 
       ),
-      body: Column(
-        children: [
-          SizedBox(
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: 10,
-          ),
-          Text('저장된 게임 리스트'),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 10,
+                ),
+                const Text('저장된 게임 리스트',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                  ),),
 
 
-          for(var i=0 ;i<saveGameList.length; i++ )
-          TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SaveViewScreen(selectList:saveGameList[i], selectNum:i)));
-            },
-            style: TextButton.styleFrom(
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                for(var i=0 ;i<saveGameList.length; i++ )
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SaveViewScreen(selectList:saveGameList[i], selectNum:i)));
+                  },
+                  style: TextButton.styleFrom(
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
 
+                  ),
+                  child: Text(
+                    '${i+1}번째 게임',
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                        color: Colors.black),
+                  ),
+                ),
+
+              ],
             ),
-            child: Text(
-              '${i+1}번째 게임',
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black),
-            ),
           ),
-
-        ],
+        ),
       ),
     );
   }

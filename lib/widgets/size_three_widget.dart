@@ -20,19 +20,22 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
   List<int> returnCount = [0, 0];
 
   // 마지막 끝남 확인
-  int countSelectNum=0;
+  int countSelectNum = 0;
 
+  //  최종 승자
+  String winner='';
 
-  void alertConfirm(picks) {
+  void alertConfirm(picks, winner) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertTwoButtonDialog(
           alertTitle: '게임 종료',
           alertContent: '게임을 저장하시겠습니까?',
-          alertWinner: _selector?'플레이어1' : '플레이어1',
+          alertWinner: _selector ? '플레이어1' : '플레이어1',
           alertConfirm: '저장',
-          alertAddList:picks,
+          alertAddList: picks,
+          // alertAddWinner: winner,
           alertCancel: '게임 다시 시작',
         );
       },
@@ -60,18 +63,14 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('지금은 ',
+            Text('지금은 ', textAlign: TextAlign.center),
+            Text(_selector ? '플레이어 1' : '플레이어 2',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 16,
+                ),
                 textAlign: TextAlign.center),
-            Text(
-              _selector ? '플레이어 1' : '플레이어 2',
-              style: TextStyle(
-                color: Colors.blue,
-                fontSize: 16,
-              ),
-                textAlign: TextAlign.center
-            ),
-            Text('님의 차례 입니다',
-                textAlign: TextAlign.center),
+            Text('님의 차례 입니다', textAlign: TextAlign.center),
           ],
         ),
         const SizedBox(
@@ -89,12 +88,12 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
                           setState(() {
                             if (picks[i] == '') {
                               _selector ? picks[i] = 'one' : picks[i] = 'two';
-                              lastSelectNum= i;
+                              lastSelectNum = i;
                               _selector = !_selector;
-                              countSelectNum+=1;
+                              countSelectNum += 1;
                             }
-                            if(countSelectNum==9){
-                              alertConfirm(picks);
+                            if (countSelectNum == 9) {
+                              alertConfirm(picks, winner);
                             }
                           });
                         },
@@ -111,30 +110,28 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
         TextButton(
           onPressed: () {
             setState(() {
-              if(picks[lastSelectNum]!='' && countSelectNum !=picks.length){
-                if(!_selector && returnCount[0]<3){
-                  returnCount[0]+=1;
-                  countSelectNum-=1;
-                  picks[lastSelectNum]='';
+              if (picks[lastSelectNum] != '' &&
+                  countSelectNum != picks.length) {
+                if (!_selector && returnCount[0] < 3) {
+                  returnCount[0] += 1;
+                  countSelectNum -= 1;
+                  picks[lastSelectNum] = '';
                   _selector = !_selector;
-                }else if(_selector && returnCount[1]<3 ){
-                  returnCount[1]+=1;
-                  countSelectNum-=1;
-                  picks[lastSelectNum]='';
+                } else if (_selector && returnCount[1] < 3) {
+                  returnCount[1] += 1;
+                  countSelectNum -= 1;
+                  picks[lastSelectNum] = '';
                   _selector = !_selector;
                 }
               }
             });
-
           },
           style: TextButton.styleFrom(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             shape: RoundedRectangleBorder(
               side: const BorderSide(
-                  width: 1,
-                  style: BorderStyle.solid,
-                  color: Colors.red),
+                  width: 1, style: BorderStyle.solid, color: Colors.red),
               borderRadius: BorderRadius.circular(10.0),
             ),
           ),
@@ -149,7 +146,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
           children: [
             Text('[플레이어 1]님의 무르기 남은 횟수는 '),
             Text(
-              '${3-returnCount[0]}회',
+              '${3 - returnCount[0]}회',
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
@@ -163,7 +160,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
           children: [
             Text('[플레이어 2]님의 무르기 남은 횟수는 '),
             Text(
-              '${3-returnCount[1]}회',
+              '${3 - returnCount[1]}회',
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 16,

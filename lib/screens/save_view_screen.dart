@@ -16,11 +16,13 @@ class SaveViewScreen extends StatefulWidget {
 
 class _SaveViewScreenState extends State<SaveViewScreen> {
 
-
+  List<String> winnerList=[];
 
   @override
   Widget build(BuildContext context) {
-    print(widget.selectList);
+    winnerList = Provider.of<SaveGameLists>(context).winnerList;
+
+    print(winnerList);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -150,6 +152,10 @@ class _SaveViewScreenState extends State<SaveViewScreen> {
 
               ],
             ),
+          SizedBox(
+            height: 30,
+          ),
+          Text('${winnerList[widget.selectNum]}님이 이기셨습니다')
 
         ],
       ),

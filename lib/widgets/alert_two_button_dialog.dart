@@ -9,11 +9,12 @@ class AlertTwoButtonDialog extends StatefulWidget {
     super.key,
     this.alertTitle,
     this.alertContent,
-    this.alertWinner,
+    required this.alertWinner,
     required this.alertAddList,
     required this.alertConfirm,
     required this.alertCancel,
   });
+
 
   String? alertTitle;
   String? alertContent;
@@ -43,21 +44,20 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
         actionsPadding: const EdgeInsets.fromLTRB(18.0, 0, 18.0, 21.0),
         title: Text(
           widget.alertTitle!,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w700,
             color: Colors.black,
           ),
           textAlign: TextAlign.center,
         ),
-        content: Flexible(
-          fit: FlexFit.loose,
+        content: SingleChildScrollView(
           child: Container(
             width: 315.0,
-            height: 200,
+            // height: 200,
             child: Column(
               children: [
-                Text(
+                const Text(
                   '축하합니다!',
                   style: TextStyle(
                     fontSize: 14.0,
@@ -66,13 +66,13 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                  children: [
-                   Text(
+                   const Text(
                      '승자는 ',
                      style: TextStyle(
                        fontSize: 14.0,
@@ -82,13 +82,13 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                      textAlign: TextAlign.center,
                    ),
                    Text(widget.alertWinner!,
-                     style: TextStyle(
+                     style: const TextStyle(
                        fontSize: 18.0,
                        fontWeight: FontWeight.w600,
                        color: Colors.indigo,
                      ),
                      textAlign: TextAlign.center,),
-                   Text(
+                   const Text(
                      '님 입니다',
                      style: TextStyle(
                        fontSize: 14.0,
@@ -120,8 +120,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<SaveGameLists>().listAdd(widget.alertAddList);
-                      print(context.read<SaveGameLists>());
+                      context.read<SaveGameLists>().listAdd(widget.alertAddList, widget.alertWinner);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => HomeScreen()));
                     },
@@ -132,7 +131,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                       backgroundColor: Colors.blue,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Colors.blue,
                           width: 1.0,
                         ),
@@ -142,7 +141,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                       padding: const EdgeInsets.symmetric(vertical: 14.0),
                       child: Text(
                         widget.alertConfirm,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -151,7 +150,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                     ),
                   ),
                 ),
-                SizedBox(width: 4.0),
+                const SizedBox(width: 4.0),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
@@ -165,7 +164,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                       backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
-                        side: BorderSide(
+                        side: const BorderSide(
                           color: Colors.grey,
                           width: 1.0,
                         ),
@@ -175,7 +174,7 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                       padding: const EdgeInsets.symmetric(vertical: 14.0),
                       child: Text(
                         widget.alertCancel,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.grey,
