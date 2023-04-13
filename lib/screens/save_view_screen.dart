@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 
 class SaveViewScreen extends StatefulWidget {
   late List<String> selectList;
-  SaveViewScreen({ required this.selectList});
+  late int selectNum;
+
+  SaveViewScreen({ required this.selectList, required this.selectNum});
 
   @override
   State<SaveViewScreen> createState() => _SaveViewScreenState();
@@ -34,95 +36,121 @@ class _SaveViewScreenState extends State<SaveViewScreen> {
       ),
       body: Column(
         children: [
-            // if(widget.selectList.length>24){
-            //   for(var a = 1; a < 4; a++)
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         for (var i = (a - 1) * 3; i < a * 3; i++)
-            //           Container(
-            //             child: widget.selectList[i] == 'one' ?
-            //             Icon(
-            //               Icons.circle_outlined,
-            //               size: 25,
-            //               color: Colors.blue,
-            //             )
-            //                 : Icon(
-            //               Icons.close,
-            //               size: 25,
-            //               color: Colors.red,
-            //             ),
-            //             width: 30,
-            //             height: 30,
-            //             decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: Colors.black,
-            //                   width: 1,
-            //                 )
-            //             ),
-            //           )
-            //       ],
-            //     ),
-            // }else if(widget.selectList.length>15){
-            //   for(var a = 1; a < 4; a++)
-            //     Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: [
-            //         for (var i = (a - 1) * 3; i < a * 3; i++)
-            //           Container(
-            //             child: widget.selectList[i] == 'one' ?
-            //             Icon(
-            //               Icons.circle_outlined,
-            //               size: 25,
-            //               color: Colors.blue,
-            //             )
-            //                 : Icon(
-            //               Icons.close,
-            //               size: 25,
-            //               color: Colors.red,
-            //             ),
-            //             width: 30,
-            //             height: 30,
-            //             decoration: BoxDecoration(
-            //                 border: Border.all(
-            //                   color: Colors.black,
-            //                   width: 1,
-            //                 )
-            //             ),
-            //           )
-            //       ],
-            //     ),
-            // }else
-            //   {
-            //     for(var a = 1; a < 4; a++)
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           for (var i = (a - 1) * 3; i < a * 3; i++)
-            //             Container(
-            //               child: widget.selectList[i] == 'one' ?
-            //               Icon(
-            //                 Icons.circle_outlined,
-            //                 size: 25,
-            //                 color: Colors.blue,
-            //               )
-            //                   : Icon(
-            //                 Icons.close,
-            //                 size: 25,
-            //                 color: Colors.red,
-            //               ),
-            //               width: 30,
-            //               height: 30,
-            //               decoration: BoxDecoration(
-            //                   border: Border.all(
-            //                     color: Colors.black,
-            //                     width: 1,
-            //                   )
-            //               ),
-            //             )
-            //         ],
-            //       ),
-            //   }
+          SizedBox(
+            height: 15,
+          ),
+          Text('${widget.selectNum+1}번째 게임',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          if(widget.selectList.length==9)
+          Column(
+            children: [
+
+              for(var a=1; a<4;a++)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    for (var i = (a - 1) * 3; i < a * 3; i++)
+                      Container(
+                        child:  widget.selectList[i]=='one' ?
+                        Icon(
+                          Icons.circle_outlined,
+                          size: 35,
+                          color: Colors.blue,
+                        )
+                            : Icon(
+                          Icons.close,
+                          size: 35,
+                          color: Colors.red,
+                        ),
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1,
+                            )
+                        ),
+                      ),
+                  ],
+                )
+
+            ],
+          ),
+
+          if(widget.selectList.length==16)
+            Column(
+              children: [
+
+                for(var a=1; a<5;a++)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var i = (a - 1) * 4; i < a * 4; i++)
+                        Container(
+                          child:  widget.selectList[i]=='one' ?
+                          Icon(
+                            Icons.circle_outlined,
+                            size: 35,
+                            color: Colors.blue,
+                          )
+                              : Icon(
+                            Icons.close,
+                            size: 35,
+                            color: Colors.red,
+                          ),
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
+                              )
+                          ),
+                        ),
+                    ],
+                  )
+              ],
+            ),
+
+          if(widget.selectList.length==25)
+            Column(
+              children: [
+                for(var a=1; a<6;a++)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      for (var i = (a - 1) * 5; i < a * 5; i++)
+                        Container(
+                          child:  widget.selectList[i]=='one' ?
+                          Icon(
+                            Icons.circle_outlined,
+                            size: 35,
+                            color: Colors.blue,
+                          )
+                              : Icon(
+                            Icons.close,
+                            size: 35,
+                            color: Colors.red,
+                          ),
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
+                              )
+                          ),
+                        ),
+                    ],
+                  )
+
+              ],
+            ),
+
         ],
       ),
     );

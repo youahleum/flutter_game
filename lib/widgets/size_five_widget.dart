@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/widgets/select_button.dart';
+import 'package:flutter_game/widgets/alert_two_button_dialog.dart';
 
 class SizeFiveWidget extends StatefulWidget {
   const SizeFiveWidget({Key? key}) : super(key: key);
@@ -23,9 +24,26 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
   int countSelectNum=0;
 
 
+  void alertConfirm(picks) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertTwoButtonDialog(
+          alertTitle: '게임 종료',
+          alertContent: '게임을 저장하시겠습니까?',
+          alertWinner: _selector?'플레이어1' : '플레이어1',
+          alertConfirm: '저장',
+          alertAddList:picks,
+          alertCancel: '게임 다시 시작',
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 30,
@@ -64,11 +82,14 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
                 for(var i=(a-1)*5; i<a*5 ;i++)
                   SelectButton(onPressed:(){
                     setState(() {
-                      if (picks[i]=='') {
-                        _selector ? picks[i] = 'one':picks[i] = 'two';
+                      if (picks[i] == '') {
+                        _selector ? picks[i] = 'one' : picks[i] = 'two';
                         lastSelectNum= i;
                         _selector = !_selector;
                         countSelectNum+=1;
+                      }
+                      if(countSelectNum==25){
+                        alertConfirm(picks);
                       }
                     });
                   },pick: picks[i], selector: _selector),

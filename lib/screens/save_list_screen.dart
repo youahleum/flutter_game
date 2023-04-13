@@ -14,6 +14,7 @@ class _SaveListScreenState extends State<SaveListScreen> {
 
   List<List<String>> saveGameList=[];
   late List<String> selectList;
+  late int selectNum;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class _SaveListScreenState extends State<SaveListScreen> {
           TextButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SaveViewScreen(selectList:saveGameList[i])));
+                  MaterialPageRoute(builder: (context) => SaveViewScreen(selectList:saveGameList[i], selectNum:i)));
             },
             style: TextButton.styleFrom(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/widgets/select_button.dart';
+import 'package:flutter_game/widgets/alert_two_button_dialog.dart';
 
 class SizeFourWidget extends StatefulWidget {
   const SizeFourWidget({Key? key}) : super(key: key);
@@ -22,9 +23,26 @@ class _SizeFourWidgetState extends State<SizeFourWidget> {
   int countSelectNum=0;
 
 
+  void alertConfirm(picks) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertTwoButtonDialog(
+          alertTitle: '게임 종료',
+          alertContent: '게임을 저장하시겠습니까?',
+          alertWinner: _selector?'플레이어1' : '플레이어1',
+          alertConfirm: '저장',
+          alertAddList:picks,
+          alertCancel: '게임 다시 시작',
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 30,
@@ -40,15 +58,18 @@ class _SizeFourWidgetState extends State<SizeFourWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('지금은 '),
+            Text('지금은 ',
+                textAlign: TextAlign.center),
             Text(
               _selector ? '플레이어 1' : '플레이어 2',
               style: TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
               ),
+                textAlign: TextAlign.center
             ),
-            Text('님의 차례 입니다'),
+            Text('님의 차례 입니다',
+                textAlign: TextAlign.center),
           ],
         ),
         const SizedBox(
@@ -63,12 +84,17 @@ class _SizeFourWidgetState extends State<SizeFourWidget> {
                   for(var i=(a-1)*4; i<a*4 ;i++)
                     SelectButton(onPressed:(){
                       setState(() {
-                        if (picks[i]=='') {
-                          _selector ? picks[i] = 'one':picks[i] = 'two';
-                          lastSelectNum= i;
-                          _selector = !_selector;
-                          countSelectNum+=1;
-                        }
+                        setState(() {
+                          if (picks[i] == '') {
+                            _selector ? picks[i] = 'one' : picks[i] = 'two';
+                            lastSelectNum= i;
+                            _selector = !_selector;
+                            countSelectNum+=1;
+                          }
+                          if(countSelectNum==16){
+                            alertConfirm(picks);
+                          }
+                        });
                       });
                     },pick: picks[i], selector: _selector),
                 ],
