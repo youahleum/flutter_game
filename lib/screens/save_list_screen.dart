@@ -19,7 +19,6 @@ class _SaveListScreenState extends State<SaveListScreen> {
   @override
   Widget build(BuildContext context) {
     saveGameList = Provider.of<SaveGameLists>(context).saveGameList;
-    print(saveGameList);
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -57,7 +56,7 @@ class _SaveListScreenState extends State<SaveListScreen> {
                   },
                   style: TextButton.styleFrom(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
 
                   ),
                   child: Text(
@@ -68,7 +67,8 @@ class _SaveListScreenState extends State<SaveListScreen> {
                         color: Colors.black),
                   ),
                 ),
-
+                if(saveGameList.length==0)
+                  Text('저장된 게임이 없습니다')
               ],
             ),
           ),

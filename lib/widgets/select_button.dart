@@ -24,27 +24,27 @@ class _SelectButtonState extends State<SelectButton> {
       child: TextButton(
         onPressed: widget.onPressed,
         style: TextButton.styleFrom(
-          side: BorderSide(
+          side: const BorderSide(
             width: 1,
             color: Colors.black,
           ),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          padding: EdgeInsets.all(10),
-          minimumSize: Size(24.0, 24.0),
+          padding: const EdgeInsets.all(10),
+          minimumSize: const Size(24.0, 24.0),
         ),
         child: widget.pick!=''
             ? widget.pick=='one'
-            ? Icon(
+            ? const Icon(
           Icons.circle_outlined,
           size: 25,
           color: Colors.blue,
         )
-            : Icon(
+            : const Icon(
           Icons.close,
           size: 25,
           color: Colors.red,
         )
-            : SizedBox(width: 25,height: 25,),),
+            : const SizedBox(width: 25,height: 25,),),
     );
   }
 }

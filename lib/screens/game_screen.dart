@@ -25,7 +25,7 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Flutter game',
           style: TextStyle(
             fontSize: 24,
@@ -48,7 +48,7 @@ class _GameScreenState extends State<GameScreen> {
                    Container(
                     height: 100,
                     padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
-                    child: Text(
+                    child: const Text(
                       '사이즈를 선택해주세요',
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -65,7 +65,7 @@ class _GameScreenState extends State<GameScreen> {
                     },
                     style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
                             width: 2,
@@ -82,7 +82,7 @@ class _GameScreenState extends State<GameScreen> {
                           color: Colors.black),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextButton(
@@ -93,7 +93,7 @@ class _GameScreenState extends State<GameScreen> {
                     },
                     style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
                             width: 2,
@@ -111,7 +111,7 @@ class _GameScreenState extends State<GameScreen> {
                           color: Colors.black),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   TextButton(
@@ -120,7 +120,7 @@ class _GameScreenState extends State<GameScreen> {
                     });},
                     style: TextButton.styleFrom(
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
                             width: 2,

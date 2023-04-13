@@ -28,7 +28,7 @@ class _SaveViewScreenState extends State<SaveViewScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           '저장된 게임',
           style: TextStyle(
             fontSize: 24,
@@ -38,16 +38,16 @@ class _SaveViewScreenState extends State<SaveViewScreen> {
       ),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text('${widget.selectNum+1}번째 게임',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           if(widget.selectList.length==9)

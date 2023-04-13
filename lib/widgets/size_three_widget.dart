@@ -47,7 +47,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         const Text(
@@ -63,14 +63,14 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('지금은 ', textAlign: TextAlign.center),
+            const Text('지금은 ', textAlign: TextAlign.center),
             Text(_selector ? '플레이어 1' : '플레이어 2',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.blue,
                   fontSize: 16,
                 ),
                 textAlign: TextAlign.center),
-            Text('님의 차례 입니다', textAlign: TextAlign.center),
+            const Text('님의 차례 입니다', textAlign: TextAlign.center),
           ],
         ),
         const SizedBox(
@@ -128,7 +128,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
           },
           style: TextButton.styleFrom(
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             shape: RoundedRectangleBorder(
               side: const BorderSide(
                   width: 1, style: BorderStyle.solid, color: Colors.red),
@@ -144,10 +144,10 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('[플레이어 1]님의 무르기 남은 횟수는 '),
+            const Text('[플레이어 1]님의 무르기 남은 횟수는 '),
             Text(
               '${3 - returnCount[0]}회',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
               ),
@@ -158,10 +158,10 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('[플레이어 2]님의 무르기 남은 횟수는 '),
+            const Text('[플레이어 2]님의 무르기 남은 횟수는 '),
             Text(
               '${3 - returnCount[1]}회',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
               ),

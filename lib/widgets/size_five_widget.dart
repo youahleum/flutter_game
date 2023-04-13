@@ -45,7 +45,7 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         const Text('5 x 5',
@@ -59,15 +59,15 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('지금은 '),
+            const Text('지금은 '),
             Text(
               _selector ? '플레이어 1' : '플레이어 2',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.blue,
                 fontSize: 16,
               ),
             ),
-            Text('님의 차례 입니다'),
+            const Text('님의 차례 입니다'),
           ],
         ),
         const SizedBox(
@@ -119,7 +119,7 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
               },
               style: TextButton.styleFrom(
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(
                       width: 1,
@@ -137,10 +137,10 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('[플레이어 1]님의 무르기 남은 횟수는 '),
+                const Text('[플레이어 1]님의 무르기 남은 횟수는 '),
                 Text(
                   '${3-returnCount[0]}회',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.blue,
                     fontSize: 16,
                   ),
@@ -151,15 +151,15 @@ class _SizeFiveWidgetState extends State<SizeFiveWidget> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('[플레이어 2]님의 무르기 남은 횟수는 '),
+                const Text('[플레이어 2]님의 무르기 남은 횟수는 '),
                 Text(
                   '${3-returnCount[1]}회',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.blue,
                     fontSize: 16,
                   ),
                 ),
-                Text(' 입니다'),
+                const Text(' 입니다'),
               ],
             ),
           ],
