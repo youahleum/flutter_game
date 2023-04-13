@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_game/providers/saveGameLists.dart';
+import 'package:provider/provider.dart';
 
 class SaveViewScreen extends StatefulWidget {
-  const SaveViewScreen({Key? key}) : super(key: key);
+  late List<String> selectList;
+  SaveViewScreen({ required this.selectList});
 
   @override
   State<SaveViewScreen> createState() => _SaveViewScreenState();
 }
 
+
+
 class _SaveViewScreenState extends State<SaveViewScreen> {
 
-  List<List<String>> saveGameList = [
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    print(widget.selectList);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -28,35 +31,98 @@ class _SaveViewScreenState extends State<SaveViewScreen> {
             fontWeight: FontWeight.w600,
           ),
         ),
-
       ),
       body: Column(
         children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 10,
-          ),
-          Text('저장된 게임 리스트'),
-
-
-          for(var i=0 ;i<saveGameList.length; i++ )
-            TextButton(
-              onPressed: () {
-
-              },
-              style: TextButton.styleFrom(
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-
-              ),
-              child: Text(
-                '${i+1}번째 게임',
-                style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Colors.black),
-              ),
-            ),
+            // if(widget.selectList.length>24){
+            //   for(var a = 1; a < 4; a++)
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         for (var i = (a - 1) * 3; i < a * 3; i++)
+            //           Container(
+            //             child: widget.selectList[i] == 'one' ?
+            //             Icon(
+            //               Icons.circle_outlined,
+            //               size: 25,
+            //               color: Colors.blue,
+            //             )
+            //                 : Icon(
+            //               Icons.close,
+            //               size: 25,
+            //               color: Colors.red,
+            //             ),
+            //             width: 30,
+            //             height: 30,
+            //             decoration: BoxDecoration(
+            //                 border: Border.all(
+            //                   color: Colors.black,
+            //                   width: 1,
+            //                 )
+            //             ),
+            //           )
+            //       ],
+            //     ),
+            // }else if(widget.selectList.length>15){
+            //   for(var a = 1; a < 4; a++)
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         for (var i = (a - 1) * 3; i < a * 3; i++)
+            //           Container(
+            //             child: widget.selectList[i] == 'one' ?
+            //             Icon(
+            //               Icons.circle_outlined,
+            //               size: 25,
+            //               color: Colors.blue,
+            //             )
+            //                 : Icon(
+            //               Icons.close,
+            //               size: 25,
+            //               color: Colors.red,
+            //             ),
+            //             width: 30,
+            //             height: 30,
+            //             decoration: BoxDecoration(
+            //                 border: Border.all(
+            //                   color: Colors.black,
+            //                   width: 1,
+            //                 )
+            //             ),
+            //           )
+            //       ],
+            //     ),
+            // }else
+            //   {
+            //     for(var a = 1; a < 4; a++)
+            //       Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           for (var i = (a - 1) * 3; i < a * 3; i++)
+            //             Container(
+            //               child: widget.selectList[i] == 'one' ?
+            //               Icon(
+            //                 Icons.circle_outlined,
+            //                 size: 25,
+            //                 color: Colors.blue,
+            //               )
+            //                   : Icon(
+            //                 Icons.close,
+            //                 size: 25,
+            //                 color: Colors.red,
+            //               ),
+            //               width: 30,
+            //               height: 30,
+            //               decoration: BoxDecoration(
+            //                   border: Border.all(
+            //                     color: Colors.black,
+            //                     width: 1,
+            //                   )
+            //               ),
+            //             )
+            //         ],
+            //       ),
+            //   }
         ],
       ),
     );

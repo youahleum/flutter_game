@@ -23,7 +23,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
   int countSelectNum=0;
 
 
-  void alertConfirm() {
+  void alertConfirm(picks) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -32,6 +32,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
           alertContent: '게임을 저장하시겠습니까?',
           alertWinner: _selector?'플레이어1' : '플레이어1',
           alertConfirm: '저장',
+          alertAddList:picks,
           alertCancel: '게임 다시 시작',
         );
       },
@@ -41,8 +42,7 @@ class _SizeThreeWidgetState extends State<SizeThreeWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // mainAxisAlignment: MainAxisAlignment.center,
-crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 30,
@@ -94,7 +94,7 @@ crossAxisAlignment: CrossAxisAlignment.center,
                               countSelectNum+=1;
                             }
                             if(countSelectNum==9){
-                              alertConfirm();
+                              alertConfirm(picks);
                             }
                           });
                         },

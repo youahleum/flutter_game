@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/providers/saveGameLists.dart';
 import 'package:flutter_game/screens/game_screen.dart';
+import 'package:flutter_game/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class AlertTwoButtonDialog extends StatefulWidget {
@@ -9,6 +10,7 @@ class AlertTwoButtonDialog extends StatefulWidget {
     this.alertTitle,
     this.alertContent,
     this.alertWinner,
+    required this.alertAddList,
     required this.alertConfirm,
     required this.alertCancel,
   });
@@ -18,6 +20,7 @@ class AlertTwoButtonDialog extends StatefulWidget {
   String? alertWinner;
   String alertConfirm;
   String alertCancel;
+  List<String> alertAddList;
 
   @override
   State<AlertTwoButtonDialog> createState() => _AlertTwoButtonDialogState();
@@ -117,8 +120,10 @@ class _AlertTwoButtonDialogState extends State<AlertTwoButtonDialog> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      context.read<SaveGameLists>().add([]);
-                      Navigator.pop(context);
+                      context.read<SaveGameLists>().listAdd(widget.alertAddList);
+                      print(context.read<SaveGameLists>());
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()));
                     },
                     style: ElevatedButton.styleFrom(
                       shadowColor: Colors.transparent,

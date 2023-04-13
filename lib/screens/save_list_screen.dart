@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_game/screens/save_view_screen.dart';
+import 'package:flutter_game/providers/saveGameLists.dart';
+import 'package:provider/provider.dart';
 
 class SaveListScreen extends StatefulWidget {
   const SaveListScreen({Key? key}) : super(key: key);
@@ -10,14 +12,14 @@ class SaveListScreen extends StatefulWidget {
 
 class _SaveListScreenState extends State<SaveListScreen> {
 
-  List<List<String>> saveGameList = [
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-    ['two', 'one', 'two', 'one', 'two', 'one', 'two', 'one', 'two'],
-  ];
+  List<List<String>> saveGameList=[];
+  late List<String> selectList;
 
   @override
   Widget build(BuildContext context) {
+    saveGameList = Provider.of<SaveGameLists>(context).saveGameList;
+    print(saveGameList);
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -44,7 +46,7 @@ class _SaveListScreenState extends State<SaveListScreen> {
           TextButton(
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SaveViewScreen()));
+                  MaterialPageRoute(builder: (context) => SaveViewScreen(selectList:saveGameList[i])));
             },
             style: TextButton.styleFrom(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -59,6 +61,7 @@ class _SaveListScreenState extends State<SaveListScreen> {
                   color: Colors.black),
             ),
           ),
+
         ],
       ),
     );
